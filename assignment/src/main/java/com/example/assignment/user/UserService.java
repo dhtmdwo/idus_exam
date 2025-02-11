@@ -23,6 +23,13 @@ public class UserService implements UserDetailsService {
 
     }
 
+    public UserDto.UserInfoResponse getUserInfo(Long idx) {
+        User user = userRepository.findById(idx).orElseThrow();
+        UserDto.UserInfoResponse dto = UserDto.UserInfoResponse.from(user);
+        return dto;
+    }
+
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> result = userRepository.findByEmail(username);
@@ -32,4 +39,7 @@ public class UserService implements UserDetailsService {
         }
         return null;
     }
+
+
+
 }
