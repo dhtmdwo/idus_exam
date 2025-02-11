@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user")
@@ -18,9 +20,19 @@ public class UserController {
         userService.signup(dto);
     }
 
-//    @GetMapping("{idx}")
-//    public ResponseEntity<UserDto.UserInfoResponse> getUser(@PathVariable int idx) {
-//
-//    }
+    @GetMapping("{idx}")
+    public ResponseEntity<UserDto.UserInfoResponse> getUser(@PathVariable Long idx) {
+        UserDto.UserInfoResponse dto = userService.getUserInfo(idx);
+        return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/getinfo")
+    public ResponseEntity<List<UserDto.UserInfoResponse>> getUsers() {
+        List<UserDto.UserInfoResponse> dtoList = userService.getUserInfoList();
+        return ResponseEntity.ok(dtoList);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity
 
 }
