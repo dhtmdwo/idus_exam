@@ -1,4 +1,4 @@
-package com.example.assignment.order;
+package com.example.assignment.orders;
 
 import com.example.assignment.user.model.User;
 import jakarta.persistence.*;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
