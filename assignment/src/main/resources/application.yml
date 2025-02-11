@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mariadb://192.0.3.43:3306/spring  # ?? ????? ??
+    url: jdbc:mariadb://192.0.3.42:3306/spring  # ?? ????? ??
     driver-class-name: org.mariadb.jdbc.Driver
     username: osj
     password: qwer1234

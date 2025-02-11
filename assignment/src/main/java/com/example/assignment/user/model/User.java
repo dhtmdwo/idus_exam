@@ -1,6 +1,6 @@
 package com.example.assignment.user.model;
 
-import com.example.assignment.order.Order;
+import com.example.assignment.orders.Orders;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,12 +25,12 @@ public class User implements UserDetails {
     private String name; //이름
     private String nickName; //별명
     private String password; //비밀번호
-    private int phone; //전화번호
+    private Long phone; //전화번호
     private String email; //이메일
     private String sex; //성별
 
     @OneToMany(mappedBy = "user")
-    private List<Order> orderList = new ArrayList<>();
+    private List<Orders> orderList = new ArrayList<>();
 
     @Override
     public String getUsername() {
