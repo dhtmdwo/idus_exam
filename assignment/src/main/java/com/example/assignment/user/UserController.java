@@ -3,6 +3,7 @@ package com.example.assignment.user;
 import com.example.assignment.user.model.UserDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,5 +20,6 @@ public class UserController {
     public void signup(@RequestBody UserDto.SignupRequest dto) {
         userService.signup(dto);
     }
+
 
 }

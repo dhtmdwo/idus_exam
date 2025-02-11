@@ -1,5 +1,7 @@
 package com.example.assignment.config;
 
+import com.example.assignment.config.filter.JwtFilter;
+import com.example.assignment.config.filter.LoginFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,14 +33,14 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(
                 (auth) -> auth
-                        .requestMatchers("/user", "/user/signup").permitAll()
+                        .requestMatchers("/user", "/user/signup", "/login").permitAll()
                         .anyRequest().permitAll()
         );
 
         http.sessionManagement(AbstractHttpConfigurer::disable);
 
-        //http.addFilterAt(new LoginFilter(configuration.getAuthenticationManager()), UsernamePasswordAuthenticationFilter.class);
-        //http.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterAt(new LoginFilter(configuration.getAuthenticationManager()), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
