@@ -24,5 +24,13 @@ public class UserDto {
         }
 
     }
+    @Getter
+    public static class loginRequest{
+        private String email;
+        private String password;
+
+    }
+
+
 
 }
