@@ -4,10 +4,9 @@ import com.example.assignment.user.model.UserDto;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,5 +20,19 @@ public class UserController {
         userService.signup(dto);
     }
 
+    @GetMapping("{idx}")
+    public ResponseEntity<UserDto.UserInfoResponse> getUser(@PathVariable Long idx) {
+        UserDto.UserInfoResponse dto = userService.getUserInfo(idx);
+        return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/getinfo")
+    public ResponseEntity<List<UserDto.UserInfoResponse>> getUsers() {
+        List<UserDto.UserInfoResponse> dtoList = userService.getUserInfoList();
+        return ResponseEntity.ok(dtoList);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity
 
 }
