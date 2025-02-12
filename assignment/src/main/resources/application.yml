@@ -1,4 +1,8 @@
 spring:
+  sql:
+    init:
+      mode: always
+
   datasource:
     url: jdbc:mariadb://192.0.3.42:3306/spring  # ?? ????? ??
     driver-class-name: org.mariadb.jdbc.Driver
@@ -8,10 +12,11 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true
+    defer-datasource-initialization: true
 
   mail:
     host: smtp.gmail.com
