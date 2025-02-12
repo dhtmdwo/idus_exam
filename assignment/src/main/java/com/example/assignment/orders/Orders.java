@@ -15,6 +15,8 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
     private String orderIdx;
+    private String productName;
+    private Long paymentDatetime;
 
     @ManyToOne
     @JoinColumn(name = "user_idx")
